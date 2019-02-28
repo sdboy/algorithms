@@ -11,8 +11,9 @@ package com.sdboy.github;
 public class FindInArray {
   public static void main(String[] args) {
     int[][] arr = {{1, 4, 7, 11, 15},{2, 5, 8, 12, 19},{3, 6, 9, 16, 22},{10, 13, 14, 17, 24},{18, 21, 23, 26, 30}};
-    int num = 39;
-    boolean flag = findInArray(arr, num);
+    int num = 30;
+//    boolean flag = findInArray(arr, num);
+    boolean flag = find(num, arr);
     System.out.println(flag);
   }
 
@@ -57,5 +58,24 @@ public class FindInArray {
       }
     }
     return arr[row][col] == num;
+  }
+
+  public static boolean find(int target, int[][] matrix){
+    if(matrix == null || matrix.length < 1 || matrix[0].length < 1) {
+      return false;
+    }
+    int row = matrix.length - 1;
+    int col = matrix[0].length - 1;
+    int r = 0, c = col;
+    while (r <= row && c >= 0) {
+      if(matrix[r][c] == target) {
+        return true;
+      }else if(target > matrix[r][c]) {
+        r++;
+      }else {
+        c--;
+      }
+    }
+    return false;
   }
 }
