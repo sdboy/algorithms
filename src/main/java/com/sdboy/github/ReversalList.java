@@ -13,6 +13,7 @@ public class ReversalList {
     int[] input = {1,3,4,5,7,9,29};
     ListNode listNode = buildListNode(input);
     reversalPrint(listNode);
+    reversalPrintHead(listNode);
   }
 
   private static ListNode buildListNode(int[] input){
@@ -40,5 +41,24 @@ public class ReversalList {
       reversalPrint(listNode.nextNode);
     }
     System.out.println(listNode.val);
+  }
+
+  private static void reversalPrintHead(ListNode listNode) {
+    ListNode head = new ListNode(-1);
+    while (listNode != null) {
+//      ListNode node = new ListNode(listNode.val);
+//      node.nextNode = head.nextNode;
+//      head.nextNode = node;
+//      listNode = listNode.nextNode;
+      ListNode node = listNode.nextNode;
+      listNode.nextNode = head.nextNode;
+      head.nextNode = listNode;
+      listNode.nextNode = node;
+    }
+
+    while (head.nextNode != null) {
+      System.out.println(head.nextNode.val);
+      head = head.nextNode;
+    }
   }
 }
