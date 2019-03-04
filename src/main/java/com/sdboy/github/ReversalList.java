@@ -12,7 +12,7 @@ public class ReversalList {
   public static void main(String[] args) {
     int[] input = {1,3,4,5,7,9,29};
     ListNode listNode = buildListNode(input);
-
+    reversalPrint(listNode);
   }
 
   private static ListNode buildListNode(int[] input){
@@ -32,11 +32,13 @@ public class ReversalList {
     return first;
   }
 
-  private static ListNode reversalPrint(ListNode listNode) {
+  private static void reversalPrint(ListNode listNode) {
     if(listNode == null){
-      return null;
+      return;
     }
-
-    return null;
+    if(listNode.nextNode != null) {
+      reversalPrint(listNode.nextNode);
+    }
+    System.out.println(listNode.val);
   }
 }
